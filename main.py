@@ -168,6 +168,7 @@ class Kiessysteem:
         berekeningen = [] #lijst voor de berekeningen van de quotiënten
 
         print("calculeren van de zetels...")
+        print(f"totaal aantal zetels: {aantal_zetels}")
 
         #bereken de aantal quotienten op basis van de aantal zetel, 
         #eg voor 3 zetels quotient1 = stemmen/1, quotient2= stemmen/2, quotient3 = stemmen/3,  voor elke partij
@@ -199,7 +200,7 @@ class Kiessysteem:
         
         #print de zetels
         for partij in self.partijen:
-            print(f"Partij {partij.partij_naam} : {partij.aantal_zetels} zetels")
+            print(f"Partij {partij.partij_naam} : {partij.aantal_zetels} zetel(s)")
 
     def verdeel_zetels(self):
         pass
