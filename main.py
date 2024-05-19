@@ -122,11 +122,11 @@ class Kiessysteem:
 
                 #user krijgts random stemcomputer dat die moet gebruiken
                 stemcomputer = random.choice(self.stemcomputers)
-                print(f"{kiezer.kiezer_id} steekt het chipkaart in stemcompiter: {stemcomputer.id}")
+                print(f"Kiezer {kiezer.kiezer_id} steekt het chipkaart in stemcomputer: {stemcomputer.id}")
 
                 #nakijken of de chipkaart geldig is
                 if chipkaart.code == stemcomputer.opstart_code:
-                    print(f"{kiezer.kiezer_id} heeft 1 geldige stem")
+                    print(f"Kiezer {kiezer.kiezer_id} heeft 1 geldige stem")
                         
                     gekozen_lijst, gekozen_partij = self.stem(kiezer)
 
