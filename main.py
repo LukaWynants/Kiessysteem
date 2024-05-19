@@ -3,7 +3,9 @@ import time
 
 class Kiessysteem:
 
-    def __init__(self):
+    def __init__(self, aantal_kiezers, aantal_partijen):
+        self.aantal_kiezers = aantal_kiezers
+        self.aantal_partijen = aantal_partijen
         self.USB = Usb()
         self.stembus = Stembus()
         self.kiezers = self.creer_kiezers()
@@ -23,23 +25,24 @@ class Kiessysteem:
         # 1200 kiezers aanmaken
         kiezers = [] # lijstje voor de 1200 kiezers
 
-        for i in range(1,1201):
+        for i in range(1, self.aantal_kiezers+1):
             kiezers.append(Kiezer(i)) 
 
         return kiezers
 
     def creer_partijen(self):
         """
-        een methode die 5 lijsten aanmaakt van 5 verschillende partijen
+        een methode die n lijsten aanmaakt van n verschillende partijen met 10 kandidaten per partij
         """
         
         kandidaten_lijst = []
         partijen = []
         kiezers = self.kiezers.copy()
         
-        while len(kandidaten_lijst) < 5:
+        while len(kandidaten_lijst) < self.aantal_partijen:
             
             partij = []
+            #voeg 10 kandidaten toe
             while len(partij) < 10:
                 
 
@@ -193,20 +196,21 @@ class Kiessysteem:
             print(f"Partij {hoogste_partij.partij_naam} heeft een zetel gekregen...")
             print(f"quotient: {hoogste_quotient}")
             hoogste_partij.aantal_zetels += 1
-
         
+        #print de zetels
         for partij in self.partijen:
             print(f"Partij {partij.partij_naam} : {partij.aantal_zetels} zetels")
-        
 
-        print(berekeningen)
+    def verdeel_zetels(self):
+        pass
 
 
         
 
 if __name__ == "__main__":
 
-    kiessysteem = Kiessysteem()
+    #initialiseer de objecten 1: aantal kiezers, 2: aantal partijen
+    kiessysteem = Kiessysteem(1200, 5)
 
     kiessysteem.start_stem_simulatie()
 
