@@ -2,6 +2,12 @@
 
 ## kiessysteem object
 Het kiessyteem object is een klasse dat het geheele stem simulatie beheert.
+
+het wordt geinitialiseert volgens:
+
+    kiessysteem = Kiessysteem(1200, 5)
+
+
 ### 1. usb
 De usb wordt geintialiseerd bij het initialisatie van het kiessyteem object
 ### 2. 
