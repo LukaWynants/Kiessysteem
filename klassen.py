@@ -55,6 +55,17 @@ class Partij():
     def __init__(self, partij_naam, kandidaten):
         self.partij_naam = partij_naam
         self.kandidaten = kandidaten
+        self.stemmen = 0
+        self.gekozen_lijsten = []
+        self.aantal_zetels = 0
+
+    def stem_toevoegen(self, gekozen_lijst):
+        """
+        als er op de partij wordt gestemd voeg een stem toe en de lijst die werdt op gestemd
+        """
+        self.stemmen += 1
+        self.gekozen_lijsten.append(gekozen_lijst)
+        
 
 class Stemcomputer:
 
