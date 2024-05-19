@@ -61,19 +61,16 @@ De zetels worden berekend met de D'Hondt methode
 
 source: https://en.wikipedia.org/wiki/D%27Hondt_method#:~:text=most%2Doverrepresented%20party.-,Example,from%20100%2C000%20down%20to%2025%2C000
 
-1. Berekening van de Quotienten voor Elke Partij:
+### Berekening van de Quotienten voor Elke Partij:
 
-a. Het aantal stemmen voor elke partij wordt gedeeld door 1, 2, 3, ..., n zetels.
+1. Het aantal stemmen voor elke partij wordt gedeeld door 1, 2, 3, ..., n zetels.
+2. Deze berekende quotienten worden toegevoegd aan een dictionary, samen met hun respectieve partij.
+3. Deze dictionary wordt toegevoegd aan een lijst van alle berekeningen voor alle partijen.
 
-b. Deze berekende quotienten worden toegevoegd aan een dictionary, samen met hun respectieve partij.
+### Toekenning van Zetels op Basis van de Hoogste Quotienten:
 
-c. Deze dictionary wordt toegevoegd aan een lijst van alle berekeningen voor alle partijen.
-
-2. Toekenning van Zetels op Basis van de Hoogste Quotienten:
-
-a. De n hoogste quotienten worden geselecteerd.
-
-b. De partijen die bij de hoogste quotienten horen, krijgen een zetel toegewezen.
+1. De n hoogste quotienten worden geselecteerd, waarbij n de aantal zetels is.
+2. De partijen die bij de n hoogste quotienten horen, krijgen een zetel toegewezen.
 
 
 Output van de console:
