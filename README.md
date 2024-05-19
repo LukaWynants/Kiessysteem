@@ -21,12 +21,19 @@ Nadat de USB is geinitialiseerd worden de volgende objecten gecreerd:
 2. Een lijst van 1200 kiezers objecten
 3. Een lijst van 5 partij objecten met elks een lijst van 10 kandidaten
 4. Een lijst met 3 stemcomputer objecten
+5. Een lijst van 60 chipkaart objecten
 
 Output van de console:
 
 ![Alt text](pictures/opstartscherm.png)
 
 ## Stem process simulatie
+
+De stemsimulatie methode begint met een while loop die checked of het atribuut voor alle kiezers het value:
+
+    self.gestemd = True 
+
+heeft
 
 ![Alt text](pictures/stemprocess.png)
 
