@@ -7,7 +7,7 @@ class Kiessysteem:
         self.aantal_kiezers = aantal_kiezers
         self.aantal_partijen = aantal_partijen
         self.USB = Usb()
-        self.stembus = Stembus()
+        self.stembus = self.initialiseer_stembus()
         self.kiezers = self.creer_kiezers()
         self.partijen = self.creer_partijen()
         self.stemcomputers = self.creer_stemcomputers()
@@ -15,8 +15,12 @@ class Kiessysteem:
         self.stem_id = 0
 
     def initialiseer_stembus(self):
+        stembus = Stembus()
         print("initialiseren van de stembus...")
-        self.stembus.init_stembus(self.USB)
+        stembus.init_stembus(self.USB)
+        print("stembus geinitialiseerd...")
+
+        return stembus
 
     def creer_kiezers(self):
         """
@@ -64,13 +68,13 @@ class Kiessysteem:
 
         """
         stemcomputers = []
-
+        print("initialiseren van 3 stemcomputers...")
         for i in range(1, 4):
             
             stemcomputer = Stemcomputer(i)
-            print(f"stemcomputer nummer: {i} geinitialiseerd...")
             stemcomputer.init_stemcomputer(self.USB)
             stemcomputers.append(stemcomputer)
+            print(f"stemcomputer nummer: {i} geinitialiseerd...")
 
         return stemcomputers
 
@@ -99,8 +103,6 @@ class Kiessysteem:
         return gekozen_lijst, gekozen_partij
 
     def start_stem_simulatie(self):
-        #initialiseer de stembus
-        self.initialiseer_stembus()
         print("simulatie start in 2s...")
         time.sleep(2)
 

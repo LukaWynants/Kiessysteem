@@ -1,3 +1,5 @@
+github link: https://github.com/LukaWynants/Kiessysteem 
+
 # Objecten initialiseren en creeren
 
 ## kiessysteem object
@@ -15,7 +17,7 @@ Het USB object wordt geïnitialiseerd bij het aanmaken van het Kiessysteem objec
 
 #### Rest van de objecten
 Nadat de USB is geinitialiseerd worden de volgende objecten gecreerd:
-1. 1 Stembus object
+1. Een Stembus object die de stembiljet objecten zal beheren
 2. Een lijst van 1200 kiezers objecten
 3. Een lijst van 5 partij objecten met elks een lijst van 10 kandidaten
 4. Een lijst met 3 stemcomputer objecten
