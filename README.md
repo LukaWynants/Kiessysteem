@@ -21,6 +21,7 @@ Nadat de USB is geinitialiseerd worden de volgende objecten gecreerd:
 4. Een lijst met 3 stemcomputer objecten
 
 Output van de console:
+
 ![Alt text](pictures/opstartscherm.png)
 
 ## Stem process simulatie
