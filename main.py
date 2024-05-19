@@ -204,11 +204,8 @@ class Kiessysteem:
         for partij in self.partijen:
             print(f"Partij {partij.partij_naam} : {partij.aantal_zetels} zetel(s)")
 
-    def verdeel_zetels(self):
-        pass
-
-
-        
+    def creer_html(self):
+        output_file = "output.html"
 
 if __name__ == "__main__":
 
