@@ -93,7 +93,7 @@ class Kiessysteem:
             gekozen_lijst = random.sample(gekozen_partij.kandidaten, len(gekozen_partij.kandidaten))
 
 
-        return gekozen_lijst
+        return gekozen_lijst, gekozen_partij
 
     def start_stem_simulatie(self):
         #initialiseer de stembus
@@ -125,7 +125,10 @@ class Kiessysteem:
                 if chipkaart.code == stemcomputer.opstart_code:
                     print(f"{kiezer.kiezer_id} heeft 1 geldige stem")
                         
-                    gekozen_lijst = self.stem(kiezer)
+                    gekozen_lijst, gekozen_partij = self.stem(kiezer)
+
+                    #stem toevoegen aan de partij, en gekozen lijst toevoegen
+                    gekozen_partij.stem_toevoegen(gekozen_lijst)
 
                     print(f"kiezer: {kiezer.kiezer_id} heeft gestemd")
                     kiezer.gestemd = True
@@ -149,10 +152,62 @@ class Kiessysteem:
                     print("chipkaart is niet geldig...")
 
             #remove de 60 kiezers die net hebben gestemd
-            kiezers = kiezers[60:]       
+            kiezers = kiezers[60:]   
+
+    def calculeer_zetels(self):
+        """
+        een methode die de zetels berekend met de D'Hondt methode
+
+        source: https://en.wikipedia.org/wiki/D%27Hondt_method#:~:text=most%2Doverrepresented%20party.-,Example,from%20100%2C000%20down%20to%2025%2C000. 
+        """
+        
+        aantal_zetels = 7 #hypothetisch 15 zetels voor 50 kandidaten
+        berekeningen = [] #lijst voor de berekeningen van de quotiënten
+
+        print("calculeren van de zetels...")
+
+        #bereken de aantal quotienten op basis van de aantal zetel, 
+        #eg voor 3 zetels quotient1 = stemmen/1, quotient2= stemmen/2, quotient3 = stemmen/3,  voor elke partij
+        for i in range(1, aantal_zetels + 1):
+            for partij in self.partijen:
+                quotient = partij.stemmen / i
+                #creer een dictionary om de partij aan hun quotient berekening vast te maken 
+                quotient_dict = dict(quotient = quotient, partij = partij)
+                berekeningen.append(quotient_dict)
+
+        #sorteer de eerste 15 hoogste quotienten
+        for i in range(1, aantal_zetels+1):
+            hoogste_quotient = 0
+            
+            for quotient_berekening in berekeningen:
+                #als de quotient hoger is dan de current hoogste, maak de quotient de nieuwe hoogste
+                if quotient_berekening["quotient"] > hoogste_quotient:
+                    hoogste_dict = quotient_berekening
+                    hoogste_quotient = quotient_berekening["quotient"]
+                    hoogste_partij = quotient_berekening["partij"]
+                    
+
+            #remove de hoogste quotient
+            berekeningen.remove(hoogste_dict)
+
+            print(f"Partij {hoogste_partij.partij_naam} heeft een zetel gekregen...")
+            print(f"quotient: {hoogste_quotient}")
+            hoogste_partij.aantal_zetels += 1
+
+        
+        for partij in self.partijen:
+            print(f"Partij {partij.partij_naam} : {partij.aantal_zetels} zetels")
+        
+
+        print(berekeningen)
+
+
+        
 
 if __name__ == "__main__":
 
     kiessysteem = Kiessysteem()
 
     kiessysteem.start_stem_simulatie()
+
+    kiessysteem.calculeer_zetels()
