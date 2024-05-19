@@ -30,17 +30,26 @@ Output van de console:
 ## Stem process simulatie
 
 Nadat het kiessyteem object is geinitialiseerd wordt de start_stem_simulatie methode geropen met:
-    
-    # het kiessyteem object moet geinitialiseerd zijn voor je de start_stem_simulatie methode aanroept
-    kiessysteem = Kiessysteem(1200, 5)
 
     kiessysteem.start_stem_simulatie()
-    
-De stemsimulatie methode begint met een while loop die checked of het atribuut voor alle kiezers het value:
 
-    self.gestemd = True 
+De stemsimulatie methode begint met een while loop die controleert of het self.gestemd attribuut voor alle kiezers de waarde True heeft.
 
-heeft
+Wat gebeurt er in deze loop:
+
+1. Een Kiezer object en een Chipkaart object worden gekozen.
+2. Het Chipkaart object wordt geïnitialiseerd met de opstartcodes.
+3. De kiezer kiest een willekeurige Stemcomputer.
+4. De Stemcomputer controleert of de opstartcode overeenkomt met de opstartcode die hij van de USB heeft ontvangen.
+5. Een willekeurige partij wordt gestemd door de kiezer.
+6. Er wordt een opgestelde lijst of een willekeurig samengestelde lijst gekozen (met een kans van 50/50).
+7. Een Stembiljet object wordt gecreëerd.
+8. Het Chipkaart object wordt gedeïnitialiseerd.
+9. Het stembiljet wordt dan gescanned met het scanner object warbij:
+        a. Het stembiljet in de stembus word geregristreed
+        b. Het stembiljet wordt getoond aan de kiezer
+
+Output van de console:
 
 ![Alt text](pictures/stemprocess.png)
 
