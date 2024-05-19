@@ -11,8 +11,9 @@ waarbij de eerste waarde het aantal kiezers is dat je wilt initialiseren en de t
 
 ### Initialisatie van het kiessysteem object:
 #### 1. usb
-De usb wordt geintialiseerd bij het initialisatie van het kiessyteem object
-### 2. 
+De USB wordt geïnitialiseerd bij het aanmaken van het Kiessysteem object in de __init__ methode. Het krijgt willekeurig een 9 digit opstartcode toegewezen bij initialisatie.
+
+#### 2. 
 
 ![Alt text](pictures/opstartscherm.png)
 
