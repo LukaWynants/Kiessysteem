@@ -30,9 +30,9 @@ Output van de console:
 ## Stem process simulatie
 
 Nadat het kiessyteem object is geinitialiseerd wordt de start_stem_simulatie methode geropen met:
-
-    kiessysteem = Kiessysteem(1200, 5) #het kiessyteem object moet geinitialiseerd zijn voor je de start_stem_simulatie kan aanroepen
-
+    
+    #het kiessyteem object moet geinitialiseerd zijn voor je de start_stem_simulatie methode kan aanroepen
+    kiessysteem = Kiessysteem(1200, 5)
     kiessysteem.start_stem_simulatie()
 
 
