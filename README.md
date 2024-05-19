@@ -31,12 +31,11 @@ Output van de console:
 
 Nadat het kiessyteem object is geinitialiseerd wordt de start_stem_simulatie methode geropen met:
     
-    #het kiessyteem object moet geinitialiseerd zijn voor je de start_stem_simulatie methode kan aanroepen
+    # het kiessyteem object moet geinitialiseerd zijn voor je de start_stem_simulatie methode aanroept
     kiessysteem = Kiessysteem(1200, 5)
+
     kiessysteem.start_stem_simulatie()
-
-
-
+    
 De stemsimulatie methode begint met een while loop die checked of het atribuut voor alle kiezers het value:
 
     self.gestemd = True 
