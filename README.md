@@ -23,7 +23,7 @@ Nadat de USB is geinitialiseerd worden de volgende objecten gecreerd:
 4. Een lijst met 3 stemcomputer objecten
 5. Een lijst van 60 chipkaart objecten
 
-Output van de console:
+#### Output van de console:
 
 ![Alt text](pictures/opstartscherm.png)
 
@@ -35,7 +35,7 @@ Nadat het kiessyteem object is geinitialiseerd wordt de start_stem_simulatie met
 
 De stemsimulatie methode begint met een while loop die controleert of het self.gestemd attribuut voor alle kiezers de waarde True heeft.
 
-Wat gebeurt er in deze loop:
+### Wat gebeurt er in deze loop:
 
 1. Een Kiezer object en een Chipkaart object worden gekozen.
 2. Het Chipkaart object wordt geïnitialiseerd met de opstartcodes.
@@ -51,7 +51,7 @@ Wat gebeurt er in deze loop:
 
         b. Het stembiljet wordt getoond aan de kiezer
 
-Output van de console:
+#### Output van de console:
 
 ![Alt text](pictures/stemprocess.png)
 
@@ -73,6 +73,6 @@ source: https://en.wikipedia.org/wiki/D%27Hondt_method#:~:text=most%2Doverrepres
 2. De partijen die bij de n hoogste quotienten horen, krijgen een zetel toegewezen.
 
 
-Output van de console:
+#### Output van de console:
 
 ![Alt text](pictures/zetel_calculatie.png)
