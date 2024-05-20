@@ -1,5 +1,9 @@
 github link: https://github.com/LukaWynants/Kiessysteem 
 
+# Install
+
+    pip install Jinja2
+
 # Objecten initialiseren en creeren
 
 ## kiessysteem object
@@ -79,5 +83,9 @@ source: https://en.wikipedia.org/wiki/D%27Hondt_method#:~:text=most%2Doverrepres
 
 
 ### HTML output
+
+Voor de html output heb ik de jinja2 library gebruikt, een output.html wordt gerendered van het /templates/template.html bestand waarin variabelen staan voor de Partij, aantal stemmen en aantal zetels
+
+#### Output.html:
 
 ![Alt text](pictures/html_output.png)
