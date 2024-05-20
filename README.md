@@ -1,6 +1,6 @@
 github link: https://github.com/LukaWynants/Kiessysteem 
 
-# Install
+# Install dependencies
 
     pip install Jinja2
 
