@@ -76,3 +76,8 @@ source: https://en.wikipedia.org/wiki/D%27Hondt_method#:~:text=most%2Doverrepres
 #### Output van de console:
 
 ![Alt text](pictures/zetel_calculatie.png)
+
+
+### HTML output
+
+![Alt text](pictures/html_output.png)
