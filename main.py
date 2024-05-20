@@ -16,6 +16,9 @@ class Kiessysteem:
         self.stem_id = 0
 
     def initialiseer_stembus(self):
+        """
+        Een methode die de steem bus creerd en initialiseert met het usb object
+        """
         stembus = Stembus()
         print("initialiseren van de stembus...")
         stembus.init_stembus(self.USB)
@@ -25,7 +28,7 @@ class Kiessysteem:
 
     def creer_kiezers(self):
         """
-        een methode die een lijst van 1200 kiezer objecten aanmaakt
+        Een methode die een lijst van 1200 kiezer objecten aanmaakt
         """
         # 1200 kiezers aanmaken
         kiezers = [] # lijstje voor de 1200 kiezers
@@ -37,7 +40,7 @@ class Kiessysteem:
 
     def creer_partijen(self):
         """
-        een methode die n lijsten aanmaakt van n verschillende partijen met 10 kandidaten per partij
+        Een methode die n lijsten aanmaakt van n verschillende partijen met 10 kandidaten per partij
         """
         
         kandidaten_lijst = []
@@ -80,6 +83,9 @@ class Kiessysteem:
         return stemcomputers
 
     def creer_chipkaarten(self):
+        """
+        Een methode die the chipkaart objecten creerd
+        """
         chipkaarten = []
         #initialiseer 60 chip kaarten
         for i in range(60):
@@ -88,6 +94,9 @@ class Kiessysteem:
         return chipkaarten
     
     def stem(self, kiezer):
+        """
+        Een methode die een kiezer object een random stem laat maken tussen een zelf opgestelde random lijst of een al opgestelde lijst
+        """
         
         #determine of the stemmer een voor de opgestelde lijst gaat kiezen of zelf een lijst maakt
         kies_random = random.choice([True, False])  # True voor opgestelde lijst, False voor zelf lijst maken
@@ -104,6 +113,9 @@ class Kiessysteem:
         return gekozen_lijst, gekozen_partij
 
     def start_stem_simulatie(self):
+        """
+        Een methode die de stem simulatie start
+        """
         print("simulatie start in 2s...")
         time.sleep(2)
 
@@ -206,6 +218,9 @@ class Kiessysteem:
             print(f"Partij {partij.partij_naam} : {partij.aantal_zetels} zetel(s)")
 
     def creer_html(self):
+        """
+        een methode die al de partijen, stemmen en zetels in een html bestand rendered met Jinja2
+        """
 
         # HTML template waar data zal worden ingevoerd
         template_bestand = "templates/template.html"
@@ -251,11 +266,15 @@ class Kiessysteem:
 
 if __name__ == "__main__":
 
-    #initialiseer de objecten 1: aantal kiezers, 2: aantal partijen
+    # initialiseer de objecten 
+    # 1: aantal kiezers, 2: aantal partijen
     kiessysteem = Kiessysteem(1200, 5)
-
+    
+    # start de Stem simulatie
     kiessysteem.start_stem_simulatie()
 
+    #calculeer de aantal zetels elke partij krijgt
     kiessysteem.calculeer_zetels()
 
+    #creer het html bestand
     kiessysteem.creer_html()
