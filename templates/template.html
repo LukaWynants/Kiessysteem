@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stemmen per Partij</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid grey;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stemmen per Partij</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Partij</th>
+                <th>Aantal Stemmen</th>
+                <th>Aantal Zetels</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ Partij_een }}</td>
+                <td>{{ Stemmen_een }}</td>
+                <td>{{ zetels_een }}</td>
+            </tr>
+            <tr>
+                <td>{{ Partij_twee }}</td>
+                <td>{{ Stemmen_twee }}</td>
+                <td>{{ zetels_twee }}</td>
+            </tr>
+            <tr>
+                <td>{{ Partij_drie }}</td>
+                <td>{{ Stemmen_drie }}</td>
+                <td>{{ zetels_drie }}</td>
+            </tr>
+            <tr>
+                <td>{{ Partij_vier }}</td>
+                <td>{{ Stemmen_vier }}</td>
+                <td>{{ zetels_vier }}</td>
+            </tr>
+            <tr>
+                <td>{{ Partij_vijf }}</td>
+                <td>{{ Stemmen_vijf }}</td>
+                <td>{{ zetels_vijf }}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
