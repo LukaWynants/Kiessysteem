@@ -4,9 +4,10 @@ import jinja2
 
 class Kiessysteem:
 
-    def __init__(self, aantal_kiezers, aantal_partijen):
+    def __init__(self, aantal_kiezers, aantal_partijen, aantal_zetels):
         self.aantal_kiezers = aantal_kiezers
         self.aantal_partijen = aantal_partijen
+        self.aantal_zetels = aantal_zetels
         self.USB = Usb()
         self.stembus = self.initialiseer_stembus()
         self.kiezers = self.creer_kiezers()
@@ -179,7 +180,7 @@ class Kiessysteem:
         source: https://en.wikipedia.org/wiki/D%27Hondt_method#:~:text=most%2Doverrepresented%20party.-,Example,from%20100%2C000%20down%20to%2025%2C000. 
         """
         
-        aantal_zetels = 7 #hypothetisch 15 zetels voor 50 kandidaten
+        aantal_zetels = self.aantal_zetels #hypothetisch 15 zetels voor 50 kandidaten
         berekeningen = [] #lijst voor de berekeningen van de quotiënten
 
         print("calculeren van de zetels...")
@@ -236,6 +237,7 @@ class Kiessysteem:
 
         # Template variabelen 
         data = {
+            "totaal_aantal_zetels" : self.aantal_zetels,
             "Partij_een": "Partij " + self.partijen[0].partij_naam,
             "Stemmen_een": self.partijen[0].stemmen,
             "zetels_een": self.partijen[0].aantal_zetels,
@@ -267,8 +269,8 @@ class Kiessysteem:
 if __name__ == "__main__":
 
     # initialiseer de objecten 
-    # 1: aantal kiezers, 2: aantal partijen
-    kiessysteem = Kiessysteem(1200, 5)
+    # 1: aantal kiezers (1200), 2: aantal partijen (5), 3: aantal zetels (7)
+    kiessysteem = Kiessysteem(1200, 5, 7)
     
     # start de Stem simulatie
     kiessysteem.start_stem_simulatie()
