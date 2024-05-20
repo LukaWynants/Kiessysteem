@@ -1,5 +1,6 @@
 from klassen import *
 import time
+import jinja2
 
 class Kiessysteem:
 
@@ -205,7 +206,48 @@ class Kiessysteem:
             print(f"Partij {partij.partij_naam} : {partij.aantal_zetels} zetel(s)")
 
     def creer_html(self):
-        output_file = "output.html"
+
+        # HTML template waar data zal worden ingevoerd
+        template_bestand = "templates/template.html"
+        # output file van waar de html naar wordt gestuurd
+        output_bestand = "output.html"
+
+        # inhoud van de template lezen
+        with open(template_bestand, "r") as file:
+            template_text = file.read()
+
+        # template in een jinja template opject stoppen
+        template = jinja2.Template(template_text)
+
+        # Template variabelen 
+        data = {
+            "Partij_een": "Partij " + self.partijen[0].partij_naam,
+            "Stemmen_een": self.partijen[0].stemmen,
+            "zetels_een": self.partijen[0].aantal_zetels,
+            "Partij_twee": "Partij " + self.partijen[1].partij_naam,
+            "Stemmen_twee": self.partijen[1].stemmen,
+            "zetels_twee": self.partijen[1].aantal_zetels,
+            "Partij_drie": "Partij " + self.partijen[2].partij_naam,
+            "Stemmen_drie": self.partijen[2].stemmen,
+            "zetels_drie": self.partijen[2].aantal_zetels,
+            "Partij_vier": "Partij " + self.partijen[3].partij_naam,
+            "Stemmen_vier": self.partijen[3].stemmen,
+            "zetels_vier": self.partijen[3].aantal_zetels,
+            "Partij_vijf": "Partij " + self.partijen[4].partij_naam,
+            "Stemmen_vijf": self.partijen[4].stemmen,
+            "zetels_vijf": self.partijen[4].aantal_zetels,
+        }
+
+        # Render de template met de data
+        rendered_html = template.render(data)
+
+        # Schrijf de gerenderde HTML naar een nieuw bestand
+        with open(output_bestand, "w") as file:
+            file.write(rendered_html)
+
+        print(f"HTML-output is gegenereerd en opgeslagen in {output_bestand}")
+
+
 
 if __name__ == "__main__":
 
@@ -215,3 +257,5 @@ if __name__ == "__main__":
     kiessysteem.start_stem_simulatie()
 
     kiessysteem.calculeer_zetels()
+
+    kiessysteem.creer_html()
