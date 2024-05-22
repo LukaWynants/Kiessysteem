@@ -36,6 +36,7 @@ class Kiezer:
         self.chipkaart = ""
         self.gestemd = False
         self.stembiljet = {}
+        self.stemmen = 0
 
     def random_naam(self):
         """
@@ -58,6 +59,7 @@ class Partij():
         self.stemmen = 0
         self.gekozen_lijsten = []
         self.aantal_zetels = 0
+        self.gekozen_kandidaten = []
 
     def stem_toevoegen(self, gekozen_lijst):
         """

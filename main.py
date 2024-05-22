@@ -149,6 +149,11 @@ class Kiessysteem:
                     #stem toevoegen aan de partij, en gekozen lijst toevoegen
                     gekozen_partij.stem_toevoegen(gekozen_lijst)
 
+                    #1ste persoon van de lijst krijgt de stem
+                    gekozen_kandidaat = gekozen_lijst[0]
+                    gekozen_kandidaat.stemmen += 1
+                    print(f"Gekozen kandidaat: {gekozen_kandidaat.kiezer_id}")
+
                     print(f"kiezer: {kiezer.kiezer_id} heeft gestemd")
                     kiezer.gestemd = True
 
@@ -207,17 +212,34 @@ class Kiessysteem:
                     hoogste_partij = quotient_berekening["partij"]
                     
 
-            #remove de hoogste quotient
+            # remove de hoogste quotient
             berekeningen.remove(hoogste_dict)
 
             print(f"Partij {hoogste_partij.partij_naam} heeft een zetel gekregen...")
             print(f"quotient: {hoogste_quotient}")
             hoogste_partij.aantal_zetels += 1
         
-        #print de zetels
+        # print de zetels
         for partij in self.partijen:
             print(f"Partij {partij.partij_naam} : {partij.aantal_zetels} zetel(s)")
 
+    def verdeel_zetels(self):
+        """
+        Een methode die de lijst van kandidaten in een partij object herschikt op volgorde van de aantal stemmen en een zetel uit te geven aan de top kandidaten van de lijst
+        """
+        # loop over elke partij object
+        for partij in self.partijen:
+            
+            # sorteer de kandidaten op basis van de aantal stemmen, kandidaat met hoogste stemmen heeft dan index 0...
+            gesorteerde_kandidaten = sorted(partij.kandidaten, key=lambda obj: obj.stemmen)
+
+            # for loop voor zetels uit te geven
+            for uitgegeven_zetel in range(0, partij.aantal_zetels):
+                # append de kandidaat aan de gekozen kandidaat van de partij
+                gekozen_kandidaat = gesorteerde_kandidaten[uitgegeven_zetel].voornaam +" "+ gesorteerde_kandidaten[uitgegeven_zetel].achternaam + " Stemmen: " + str(gesorteerde_kandidaten[uitgegeven_zetel].stemmen)
+                partij.gekozen_kandidaten.append(gekozen_kandidaat)
+            
+            
     def creer_html(self):
         """
         een methode die al de partijen, stemmen en zetels in een html bestand rendered met Jinja2
@@ -241,18 +263,23 @@ class Kiessysteem:
             "Partij_een": "Partij " + self.partijen[0].partij_naam,
             "Stemmen_een": self.partijen[0].stemmen,
             "zetels_een": self.partijen[0].aantal_zetels,
+            "gekozen_kandidaten_een": self.partijen[0].gekozen_kandidaten,
             "Partij_twee": "Partij " + self.partijen[1].partij_naam,
             "Stemmen_twee": self.partijen[1].stemmen,
             "zetels_twee": self.partijen[1].aantal_zetels,
+            "gekozen_kandidaten_twee": self.partijen[1].gekozen_kandidaten,
             "Partij_drie": "Partij " + self.partijen[2].partij_naam,
             "Stemmen_drie": self.partijen[2].stemmen,
             "zetels_drie": self.partijen[2].aantal_zetels,
+            "gekozen_kandidaten_drie": self.partijen[2].gekozen_kandidaten,
             "Partij_vier": "Partij " + self.partijen[3].partij_naam,
             "Stemmen_vier": self.partijen[3].stemmen,
             "zetels_vier": self.partijen[3].aantal_zetels,
+            "gekozen_kandidaten_vier": self.partijen[3].gekozen_kandidaten,
             "Partij_vijf": "Partij " + self.partijen[4].partij_naam,
             "Stemmen_vijf": self.partijen[4].stemmen,
             "zetels_vijf": self.partijen[4].aantal_zetels,
+            "gekozen_kandidaten_vijf": self.partijen[4].gekozen_kandidaten,
         }
 
         # Render de template met de data
@@ -277,6 +304,9 @@ if __name__ == "__main__":
 
     #calculeer de aantal zetels elke partij krijgt
     kiessysteem.calculeer_zetels()
+
+    #verdeel de zetels
+    kiessysteem.verdeel_zetels()
 
     #creer het html bestand
     kiessysteem.creer_html()
