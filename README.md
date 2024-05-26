@@ -46,7 +46,7 @@ De stemsimulatie methode begint met een while loop die controleert of het self.g
 3. De kiezer kiest een willekeurige Stemcomputer.
 4. De Stemcomputer controleert of de opstartcode van de chipkaart overeenkomt met de opstartcode die hij van de USB heeft ontvangen.
 5. Een willekeurige partij wordt gestemd door de kiezer.
-6. Er wordt een opgestelde lijst of een willekeurig samengestelde lijst gekozen (met een kans van 50/50).
+6. Er wordt een opgestelde lijst of een willekeurig samengestelde lijst gekozen (met een kans van 50/50), de top kandidaat van de gekozen lijst krijgt een punt.
 7. Een Stembiljet object wordt gecreëerd.
 8. Het Chipkaart object wordt gedeïnitialiseerd.
 9. Het stembiljet wordt dan gescanned met het scanner object warbij:
@@ -81,10 +81,14 @@ source: https://en.wikipedia.org/wiki/D%27Hondt_method#:~:text=most%2Doverrepres
 
 ![Alt text](pictures/zetel_calculatie.png)
 
+#### Zetels verdelen aan de kandidaten:
+
+1. De Kandidaten die het meest aan de top van het lijst waren zijn berekend, en de een lijst is gemaakt met deze volgorde
+2. De top n aantal kandidaten worden gekozen om een zetel te krijgen op basis van de zetel verdeling van hierboven.
 
 ### HTML output
 
-Voor de html output heb ik de jinja2 library gebruikt, een output.html wordt gerendered van het /templates/template.html bestand waarin variabelen staan voor de Partij, aantal stemmen en aantal zetels
+Voor de html output heb ik de jinja2 library gebruikt, een output.html wordt gerendered van het /templates/template.html bestand waarin variabelen staan voor de Partij, aantal stemmen en aantal zetels en welke kandidaten de zetels krijgen.
 
 #### Output.html:
 
